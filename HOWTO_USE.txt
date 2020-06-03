@@ -1,0 +1,18 @@
+./scripts/make_bat__sam2depth_SE.pl  test_files/bam_files_SE/ Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
+chmod +x sam2coverage_SE.bat
+./sam2coverage_SE.bat
+
+#For PE 
+#./scripts/make_bat__sam2depth_PE.pl test_files/bam_files_PE/ DepthPE.dir JunctionPE.dir RPM 1 stranded > sam2coverage_PE.bat
+
+ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
+chmod +x make_index.bat
+./make_index.bat
+
+./scripts/print_Introns.pl test_files/refseq_mm10_GRCm38.p4.representative.chr17_chr19.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed
+awk '{if ($3 - $2 >= 20000) print}' refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed
+./scripts/make_IniTerRegion.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed 10000 > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed
+./scripts/make_bat__calc_RPKM.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed Depth.dir RPKM.dir 100 > calc_RPKM.bat
+chmod +x calc_RPKM.bat
+./calc_RPKM.bat
+
