@@ -46,9 +46,10 @@ chmod +x sam2coverage_SE.bat
 
 ## For Single-end RNA-seq data 
 # "stranded" option here means FR-firststrand. So reverse complement alignment of R1 and foward alignment of R2 are treated as on the plus strands of the genome.
-./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
 # This code is just for example.
 # bam_files_PE is not prepared.
+./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
+
 
 
 # 2. Make Index for the .depth Files
