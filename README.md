@@ -6,7 +6,6 @@ Scripts to calcuate RPKM values for genes/exons/regions with mapped RNA-seq data
 Author
 ---------
 Kei IIDA, iida.kei.3r@kyoto-u.ac.jp
-calculate RPKM values from RNA-seq data
 
 Requirement
 ---------
@@ -19,9 +18,11 @@ DEMO
 This demo is for calculate RPKM values initial- and terminal-10kb-regions of introns of the mouse genes.
 
 Genes on chr17, chr18, and chr19 in the genome annotaion GRCm38.p4 from Refseq is used.
+
 A directory ./test_files/bam_files_SE/ contains test bam files used with STAR aligner.
+
 See detail for the bam files; Takeuch et al. 2018. Cell. Rep. and GSExxxxx.
-```bash
+```
 #At the Downloaded Directory
 #For Single-end RNA-seq data
 $./scripts/make_bat__sam2depth_SE.pl  ./test_files/bam_files_SE/ Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
