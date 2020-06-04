@@ -34,37 +34,37 @@ See detail for the bam files; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.o
 
 Awk is used for make batch files, Can be replaced any others.
 ```
-##For Single-end RNA-seq data
-#make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
-#[Output_Directory_for_Junction_Information]; It is not used in the following steps, in this demo.
-#[RPM/RAW] RPM; for nomalizing the mapped reads size. "1" for RPM, "10" for RP10M.
-#[stranded/unstranded]; "stranded" for treating the read strandness as in bam files. With "unstranded", all reads were treated as on the plus strands of the genome.
-$./scripts/make_bat__sam2depth_SE.pl  ./test_files/bam_files_SE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
-$chmod +x sam2coverage_SE.bat
-$./sam2coverage_SE.bat
+## 1.For Single-end RNA-seq data
+# make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
+# [Output_Directory_for_Junction_Information]; It is not used in the following steps, in this demo.
+# [RPM/RAW] RPM; for nomalizing the mapped reads size. "1" for RPM, "10" for RP10M.
+# [stranded/unstranded]; "stranded" for treating the read strandness as in bam files. With "unstranded", all reads were treated as on the plus strands of the genome.
+./scripts/make_bat__sam2depth_SE.pl  ./test_files/bam_files_SE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
+chmod +x sam2coverage_SE.bat
+./sam2coverage_SE.bat
 
 
-##For Single-end RNA-seq data 
-#"stranded" option here means FR-firststrand. So reverse complement alignment of R1 and foward alignment of R2 are treated as on the plus strands of the genome.
-$./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
-#This code is just for example.
-#bam_files_PE is not prepared.
+## For Single-end RNA-seq data 
+# "stranded" option here means FR-firststrand. So reverse complement alignment of R1 and foward alignment of R2 are treated as on the plus strands of the genome.
+./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
+# This code is just for example.
+# bam_files_PE is not prepared.
 
 
-#Make Index for the .depth files
-$ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
-$chmod +x make_index.bat
+# 2. Make Index for the .depth Files
+ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
+chmod +x make_index.bat
 $./make_index.bat
 
-#Prepare bed file for the target of calculate RPKM
-$./scripts/print_Introns.pl test_files/refseq_mm10_GRCm38.p4.representative.chr17_chr19.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed
-$awk '{if ($3 - $2 >= 20000) print}' refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed
-$./scripts/make_IniTerRegion.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed 10000 > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed
-$./scripts/make_bat__calc_RPKM.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed Depth.dir RPKM.dir 100 > calc_RPKM.bat
-$chmod +x calc_RPKM.bat
-$./calc_RPKM.bat
+# 3. Prepare bed file for the target of calculate RPKM
+./scripts/print_Introns.pl test_files/refseq_mm10_GRCm38.p4.representative.chr17_chr19.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed
+awk '{if ($3 - $2 >= 20000) print}' refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed
+./scripts/make_IniTerRegion.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed 10000 > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed
+./scripts/make_bat__calc_RPKM.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed Depth.dir RPKM.dir 100 > calc_RPKM.bat
+chmod +x calc_RPKM.bat
+./calc_RPKM.bat
 
-#Results were found in the directory; RPKM.dir
+# 4. Results were found in the directory; RPKM.dir
 ```
 
 Output
