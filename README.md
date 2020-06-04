@@ -18,7 +18,9 @@ DEMO
 This demo is for calculate RPKM values initial- and terminal-10kb-regions of introns of the mouse genes.  
 Genes on chr17, chr18, and chr19 in the genome annotaion GRCm38.p4 from Refseq is used.  
 A directory ./test_files/bam_files_SE/ contains test bam files used with STAR aligner.  
-See detail for the bam files; Takeuch et al. 2018. Cell. Rep. and GSExxxxx.
+See detail for the bam files; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.org/10.1016/j.celrep.2018.03.141 "DOI") and [GSE60241](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60241 "NCBI GEO").
+
+Awk is used for make batch files, Can be replaced any others.
 ```
 #At the Downloaded Directory
 #For Single-end RNA-seq data
