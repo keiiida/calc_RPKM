@@ -38,7 +38,7 @@ Genes on chr17, chr18, and chr19 in the genome annotaion GRCm38.p4 from Refseq i
 A directory ./test_files/bam_files_SE/ contains test bam files used with STAR aligner.  
 See detail for the bam files; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.org/10.1016/j.celrep.2018.03.141 "DOI") and [GSE60241](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60241 "NCBI GEO").
 
-Awk is used for make batch files, Can be replaced any others.
+Awk is used for making batch files, which can be replaced by any others.
 ```
 ## 1.For Single-end RNA-seq data
 # make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
