@@ -9,18 +9,15 @@ Kei IIDA, iida.kei.3r@kyoto-u.ac.jp
 
 Requirement
 ---------
- * Perl is required.
+ * Perl is required.  
   (The current version is tested on 64 bit Linux.)
  * samtools is required.
  
 DEMO
 ---------
-This demo is for calculate RPKM values initial- and terminal-10kb-regions of introns of the mouse genes.
-
-Genes on chr17, chr18, and chr19 in the genome annotaion GRCm38.p4 from Refseq is used.
-
-A directory ./test_files/bam_files_SE/ contains test bam files used with STAR aligner.
-
+This demo is for calculate RPKM values initial- and terminal-10kb-regions of introns of the mouse genes.  
+Genes on chr17, chr18, and chr19 in the genome annotaion GRCm38.p4 from Refseq is used.  
+A directory ./test_files/bam_files_SE/ contains test bam files used with STAR aligner.  
 See detail for the bam files; Takeuch et al. 2018. Cell. Rep. and GSExxxxx.
 ```
 #At the Downloaded Directory
@@ -48,4 +45,4 @@ $./calc_RPKM.bat
 ```
 
 
- ==
+ ---------
