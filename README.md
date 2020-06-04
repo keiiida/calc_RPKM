@@ -62,10 +62,12 @@ ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.b
 chmod +x make_index.bat
 ./make_index.bat
 
-# 3. Prepare bed file for the target of calculate RPKM
+# 3. Prepare bed file for the target region
 ./scripts/print_Introns.pl test_files/refseq_mm10_GRCm38.p4.representative.chr17_chr19.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed
 awk '{if ($3 - $2 >= 20000) print}' refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed
 ./scripts/make_IniTerRegion.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.bed 10000 > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed
+
+# 4. calculate RPKM
 ./scripts/make_bat__calc_RPKM.pl refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.o20k.Ini_Ter_10k.bed Depth.dir RPKM.dir 100 > calc_RPKM.bat
 chmod +x calc_RPKM.bat
 ./calc_RPKM.bat
