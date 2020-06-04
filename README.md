@@ -20,6 +20,11 @@ Requirement
   (The current version is tested on 64 bit Linux.)
  * samtools is required.
  
+Input
+---------
+ * bed file
+ * bam files (must be sorted, in not indexed, .bai files are generated)
+ 
 DEMO
 ---------
 This demo is for calculate RPKM values Initial- and Terminal-10kb-regions of introns of the mouse genes.  
@@ -29,14 +34,22 @@ See detail for the bam files; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.o
 
 Awk is used for make batch files, Can be replaced any others.
 ```
-#At the Downloaded Directory
-#For Single-end RNA-seq data
-$./scripts/make_bat__sam2depth_SE.pl  ./test_files/bam_files_SE/ Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
+##For Single-end RNA-seq data
+#./scripts/make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
+#[Output_Directory_for_Junction_Information]; It is not used in the following steps, in this demo.
+#[RPM/RAW] RPM; for nomalizing the mapped reads size. "1" for RPM, "10" for RP10M.
+#[stranded/unstranded]; "stranded" for treating the read strandness as in bam files. With "unstranded", all reads were treated as on the plus strands of the genome.
+$./scripts/make_bat__sam2depth_SE.pl  ./test_files/bam_files_SE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_SE.bat
 $chmod +x sam2coverage_SE.bat
 $./sam2coverage_SE.bat
 
-#For Single-end RNA-seq data 
-$./scripts/make_bat__sam2depth_PE.pl test_files/bam_files_PE/ Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
+
+##For Single-end RNA-seq data 
+#"stranded" option here means FR-firststrand. So reverse complement alignment of R1 and foward alignment of R2 are treated as on the plus strands of the genome.
+$./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
+#This code is just for example.
+#bam_files_PE is not prepared.
+
 
 #Make Index for the .depth files
 $ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
@@ -54,5 +67,12 @@ $./calc_RPKM.bat
 #Results were found in the directory; RPKM.dir
 ```
 
-
- ---------
+Output
+---------
+#ID	Region_Length	RPM(Lib-Size Normalization Depends on Depth File)	RPKM
+NM_134123.I1.Ini	10000	23.2087	2.3209
+NM_134123.I1.Ter	10000	0.0000	0.0000
+* Culumn1; ID
+* Culumn2; Region_Length (Exonic Regions for Genes)
+* Normalized Read counts (RPM, if the depth files are normalized as RPM).
+* Expression value of the ID (RPKM, if the depth files are normalized as RPM).
