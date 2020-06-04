@@ -1,4 +1,4 @@
-<h1>calc_RPKM</h1>
+calc_RPKM
 ========
 Scripts to calcuate RPKM values for genes/exons/regions with mapped RNA-seq data.
 
