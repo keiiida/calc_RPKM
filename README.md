@@ -69,10 +69,13 @@ chmod +x calc_RPKM.bat
 
 Output
 ---------
-#ID	Region_Length	RPM(Lib-Size Normalization Depends on Depth File)	RPKM  
-NM_134123.I1.Ini	10000	23.2087	2.3209  
-NM_134123.I1.Ter	10000	0.0000	0.0000  
-* Culumn1; ID
-* Culumn2; Region_Length (Exonic Regions for Genes)
-* Normalized Read counts (RPM, if the depth files are normalized as RPM).
-* Expression value of the ID (RPKM, if the depth files are normalized as RPM).
+
+| #ID | Region_Length | RPM(Lib-Size Normalization Depends on Depth File) | RPKM |
+| --- | --- | --- | --- |
+| NM_134123.I1.Ini | 10000 | 23.2087 | 2.3209 |  
+| NM_134123.I1.Ter | 10000 | 0.0000 | 0.0000 |  
+| XM_006523225.I1.Ini | 10000 | 14.6721 | 1.4672 |
+* Column 1; ID
+* Column 2; Region_Length (Exonic Regions for Genes)
+* Column 3; Normalized Read counts (RPM, if the depth files are normalized as RPM).
+* Column 4; Expression value of the ID (RPKM, if the depth files are normalized as RPM).
