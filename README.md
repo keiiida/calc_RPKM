@@ -52,7 +52,6 @@ chmod +x sam2coverage_SE.bat
 ./scripts/make_bat__sam2depth_PE.pl ./bam_files_PE Depth.dir Junction.dir RPM 1 stranded > sam2coverage_PE.bat
 
 
-
 # 2. Make Index for the .depth Files
 ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
 chmod +x make_index.bat
