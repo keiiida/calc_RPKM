@@ -20,7 +20,13 @@ Requirement
  * Perl is required.  
   (The current version is tested on 64 bit Linux.)
  * samtools is required.
- 
+
+Document
+---------
+![Document](https://github.com/keiiida/calc_RPKM/blob/master/Document.pdf) is under preparation.
+In the current time, essential processes to calcurate depth from RNA-seq read were described.
+
+
 Input
 ---------
  * bed file
@@ -55,7 +61,7 @@ chmod +x sam2coverage_SE.bat
 # 2. Make Index for the .depth Files
 ls Depth.dir/*.depth |awk '{print "./scripts/make_index.pl " $1}' > make_index.bat
 chmod +x make_index.bat
-$./make_index.bat
+./make_index.bat
 
 # 3. Prepare bed file for the target of calculate RPKM
 ./scripts/print_Introns.pl test_files/refseq_mm10_GRCm38.p4.representative.chr17_chr19.bed > refseq_mm10_GRCm38.p4.representative.chr17_chr19.introns.bed
