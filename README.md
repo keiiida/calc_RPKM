@@ -23,9 +23,8 @@ Requirement
 
 Document
 ---------
-Document is under preparation.
+[Document](https://github.com/keiiida/calc_RPKM/blob/master/Document.pdf "Document") is under preparation.
 In the current time, essential processes to calcurate depth from RNA-seq read were described.
-![Document](https://github.com/keiiida/calc_RPKM/blob/master/Document.pdf "Document")
 
 Input
 ---------
