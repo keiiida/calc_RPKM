@@ -9,6 +9,7 @@ The scripts designed to calculate RPKM values for genomic elements in ***variabl
 It is useful to assess transcriptinal profiles of the genomic elements in several aspects.
 See examples the refference; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.org/10.1016/j.celrep.2018.03.141 "DOI"), Fig 3 or Fig. 4. 
 In the scripts, base-wise depth is calculated initially (.depth files), then calculate read numbers on each region based on total depths and average length of RNA-seq reads (See the document for detail.)
+[HowToWork](HowToWork.png "Image")
 
 Author
 ---------
