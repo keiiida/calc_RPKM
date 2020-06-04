@@ -35,7 +35,7 @@ See detail for the bam files; [Takeuch *et al.* 2018. *Cell Rep.*](https://doi.o
 Awk is used for make batch files, Can be replaced any others.
 ```
 ##For Single-end RNA-seq data
-#./scripts/make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
+#make_bat__sam2depth_SE.pl [Direcrtory_for_bam_files] [Output_Directory_for_Deprth] [Output_Directory_for_Junction_Information] [RPM/RAW] [Normalized_size_for_RPM_Mode(1 means million)] [stranded/unstranded]
 #[Output_Directory_for_Junction_Information]; It is not used in the following steps, in this demo.
 #[RPM/RAW] RPM; for nomalizing the mapped reads size. "1" for RPM, "10" for RP10M.
 #[stranded/unstranded]; "stranded" for treating the read strandness as in bam files. With "unstranded", all reads were treated as on the plus strands of the genome.
